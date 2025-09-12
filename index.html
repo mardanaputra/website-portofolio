@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Saya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+        .section-active {
+            display: block;
+        }
+        .section-inactive {
+            display: none;
+        }
+        .nav-link {
+            transition: color 0.3s, font-weight 0.3s;
+        }
+        .nav-link.active {
+            color: #4f46e5;
+            font-weight: 700;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-0.5rem);
+        }
+        .calc-btn {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.2s ease-in-out;
+        }
+        .calc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+        }
+        /* Style untuk Slider */
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .mySlides {
+            display: none;
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+        }
+        .slider-nav-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+            border: none;
+        }
+        .slider-nav-btn.next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .slider-nav-btn:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .dot.active, .dot:hover {
+            background-color: #717171;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-200 flex flex-col min-h-screen">
+    <header class="bg-white shadow-lg py-4">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <a href="#" class="text-3xl font-extrabold text-gray-900">mardanaptra</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-600 hover:text-indigo-600 active-link" data-section="home">Beranda</a>
+                <a href="#about" class="nav-link text-gray-600 hover:text-indigo-600" data-section="about">Tentang Saya</a>
+                <a href="#projects" class="nav-link text-gray-600 hover:text-indigo-600" data-section="projects">Galeri</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:text-indigo-600" data-section="contact">Kontak</a>
+                <a href="#javascript-task" class="nav-link text-gray-600 hover:text-indigo-600" data-section="javascript-task">Tugas JS</a>
+            </nav>
+            <button id="menu-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <nav id="mobile-menu" class="md:hidden bg-white mt-2 hidden">
+            <a href="#home" class="block py-3 px-4 text-gray-800 hover:bg-gray-200" data-section="home">Beranda</a>
+            <a href="#about" class="block py-3 px-4 text-gray-800 hover:bg-gray-200" data-section="about">Tentang Saya</a>
+            <a href="#projects" class="block py-3 px-4 text-gray-800 hover:bg-gray-200" data-section="projects">Proyek</a>
+            <a href="#contact" class="block py-3 px-4 text-gray-800 hover:bg-gray-200" data-section="contact">Kontak</a>
+            <a href="#javascript-task" class="block py-3 px-4 text-gray-800 hover:bg-gray-200" data-section="javascript-task">Tugas JS</a>
+        </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 md:px-6 py-12">
+        <!-- Halaman Beranda -->
+        <section id="home" class="section-active">
+            <div class="min-h-[70vh] flex flex-col justify-center items-center text-center">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6">
+                    Selamat Datang di Portofolio Saya
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl leading-relaxed">
+                    Saya adalah Suniaramana Mardana Putra, mahasiswa Program Studi Teknologi Rekayasa Perangkat Lunak. Saya memiliki minat dalam bidang pemrograman, desain grafis dan videografi. Selama perkuliahan, saya terbiasa mengerjakan proyek individu maupun tim yang melatih skill serta kerja sama.
+                </p>
+                <a href="#projects" class="nav-link bg-indigo-600 text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-indigo-700 transition duration-300 transform hover:scale-105 shadow-md" data-section="projects">Lihat Galeri Saya</a>
+            </div>
+        </section>
+
+        <!-- Halaman Tentang Saya -->
+        <section id="about" class="section-inactive py-16">
+            <div class="max-w-5xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Tentang Saya</h2>
+                <div class="card p-10 flex flex-col items-center">
+                    <!-- Ganti URL di bawah ini dengan tautan gambar profil Anda setelah diunggah ke layanan hosting gambar -->
+                    <img src="foto profil.png" alt="Foto Profil" class="w-40 h-40 rounded-full mx-auto mb-6 object-cover">
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        Saya adalah seorang mahasiswa/profesional yang tertarik pada dunia pengembangan web. Saya memiliki keahlian dalam HTML, CSS, dan JavaScript, serta pengalaman dalam menggunakan framework modern seperti Tailwind CSS. Saya sangat menikmati proses mengubah ide menjadi produk digital yang fungsional dan estetis.
+                    </p>
+                    <p class="text-gray-700 text-lg leading-relaxed mt-6">
+                        Selain coding, saya suka belajar hal-hal baru, membaca buku, dan bermain game. Saya selalu mencari tantangan baru dan peluang untuk berkembang.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman Galeri -->
+        <section id="projects" class="section-inactive py-16">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-12">Galeri</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Foto Organisasi -->
+                <div class="card p-0">
+                    <img src="Ukm Catur.JPG" alt="Foto kegiatan organisasi mahasiswa" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Organisasi</h3>
+                        <p class="text-gray-600 mb-6">Sebagai Wakil Ketua UKM Catur, saya dipercaya menjadi Korma TRPL, sejak SMK saya sudah aktif mengikuti kegiatan.</p>
+                        <a href="#organisasi-detail" class="nav-link inline-block bg-indigo-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-600 transition duration-300" data-section="organisasi-detail">Lihat Detail</a>
+                    </div>
+                </div>
+                <!-- Foto Prestasi -->
+                <div class="card p-0">
+                    <img src="Beregu Putra Standar.png" alt="Sertifikat penghargaan akademik" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Prestasi</h3>
+                        <p class="text-gray-600 mb-6">Saya berprestasi dalam bidang non-akademik sejak SD hingga sekarang, saya meraih 5 medali dalam ajang PORPROV.</p>
+                        <a href="#prestasi-detail" class="nav-link inline-block bg-indigo-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-600 transition duration-300" data-section="prestasi-detail">Lihat Detail</a>
+                    </div>
+                </div>
+                <!-- Foto Internship -->
+                <div class="card p-0">
+                    <img src="magang1.jpg" alt="Pengalaman magang di perusahaan teknologi" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Internship</h3>
+                        <p class="text-gray-600 mb-6">Tim Kreatif di salah satu perusahaan industri di ubud selama 6 bulan.</p>
+                        <a href="#internship-detail" class="nav-link inline-block bg-indigo-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-600 transition duration-300" data-section="internship-detail">Lihat Detail</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman Detail Organisasi -->
+        <section id="organisasi-detail" class="section-inactive py-16">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Detail Organisasi</h2>
+                <div class="card p-10">
+                    <div class="slider-container relative mb-6 rounded-lg shadow-md" data-slider-id="organisasi">
+                        <img class="mySlides w-full h-auto object-cover" src="Ukm Catur.JPG">
+                        <img class="mySlides w-full h-auto object-cover" src="Hmj Ti.JPG" alt="Foto kegiatan organisasi mahasiswa 2">
+                        <img class="mySlides w-full h-auto object-cover" src="Jebag.jpg" alt="Foto kegiatan organisasi mahasiswa 3">
+                        <button class="slider-nav-btn prev-btn absolute left-0 top-1/2 -translate-y-1/2 px-4 py-2 text-3xl text-white rounded-r-lg" onclick="plusSlides(-1, 'organisasi')">&#10094;</button>
+                        <button class="slider-nav-btn next-btn absolute right-0 top-1/2 -translate-y-1/2 px-4 py-2 text-3xl text-white rounded-l-lg" onclick="plusSlides(1, 'organisasi')">&#10095;</button>
+                        <div class="text-center mt-4">
+                            <span class="dot" onclick="currentSlide(1, 'organisasi')"></span>
+                            <span class="dot" onclick="currentSlide(2, 'organisasi')"></span>
+                            <span class="dot" onclick="currentSlide(3, 'organisasi')"></span>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        Saya aktif dalam berbagai organisasi sejak SMK hingga kuliah. Saat ini, saya mengikuti UKM Catur dan dipercaya sebagai Wakil Ketua Umum, serta di HMJ Teknik Informatika saya menjabat sebagai Koordinator Mahasiswa TRPL. Pada masa SMK, saya juga aktif di organisasi Jegeg Bagus, Majelis Perwakilan Kelas (MPK), dan Pramuka. Melalui pengalaman tersebut, saya banyak belajar mengenai kepemimpinan, manajemen kegiatan, kerja sama tim, serta kemampuan komunikasi yang terus saya kembangkan hingga saat ini.
+                    </p>
+                    <a href="#projects" class="nav-link inline-block mt-8 bg-gray-500 text-white px-6 py-3 rounded-full text-base font-semibold hover:bg-gray-600 transition duration-300" data-section="projects">Kembali ke Galeri</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Halaman Detail Prestasi -->
+        <section id="prestasi-detail" class="section-inactive py-16">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Detail Prestasi</h2>
+                <div class="card p-10">
+                    <div class="slider-container relative mb-6 rounded-lg shadow-md" data-slider-id="prestasi">
+                        <img class="mySlides w-full h-auto object-cover" src="Beregu Putra Standar.png">
+                        <img class="mySlides w-full h-auto object-cover" src="pexi 2022.jpg" alt="Sertifikat penghargaan akademik 2">
+                        <img class="mySlides w-full h-auto object-cover" src="ML.jpg" alt="Sertifikat penghargaan akademik 3">
+                        <button class="slider-nav-btn prev-btn absolute left-0 top-1/2 -translate-y-1/2 px-4 py-2 text-3xl text-white rounded-r-lg" onclick="plusSlides(-1, 'prestasi')">&#10094;</button>
+                        <button class="slider-nav-btn next-btn absolute right-0 top-1/2 -translate-y-1/2 px-4 py-2 text-3xl text-white rounded-l-lg" onclick="plusSlides(1, 'prestasi')">&#10095;</button>
+                        <div class="text-center mt-4">
+                            <span class="dot" onclick="currentSlide(1, 'prestasi')"></span>
+                            <span class="dot" onclick="currentSlide(2, 'prestasi')"></span>
+                            <span class="dot" onclick="currentSlide(3, 'prestasi')"></span>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        Saya berprestasi dalam bidang non-akademik sejak sekolah dasar hingga sekarang. Salah satu pencapaian terbesar saya adalah meraih 5 medali dalam ajang PORPROV. Selain itu, saya juga memiliki prestasi di berbagai bidang lain, seperti juara lomba Microsoft Excel, kompetisi foto dan video kreatif, serta aktif dalam dunia e-sport Mobile Legends, di mana saya bersama tim berhasil mengikuti dan menorehkan hasil baik dalam beberapa turnamen. Rangkaian pengalaman ini membantu saya mengasah kemampuan berpikir kritis, kreativitas, serta kerja sama tim, yang mendukung perkembangan diri saya baik di bidang akademik maupun non-akademik.
+                    </p>
+                    <a href="#projects" class="nav-link inline-block mt-8 bg-gray-500 text-white px-6 py-3 rounded-full text-base font-semibold hover:bg-gray-600 transition duration-300" data-section="projects">Kembali ke Galeri</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman Detail Internship -->
+        <section id="internship-detail" class="section-inactive py-16">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Detail Internship</h2>
+                <div class="card p-10">
+                    <div class="slider-container relative mb-6 rounded-lg shadow-md" data-slider-id="internship">
+                        <img class="mySlides w-full h-auto object-cover" src="magang1.jpg" alt="Pengalaman magang di perusahaan teknologi 1">
+                        <img class="mySlides w-full h-auto object-cover" src="magang2.jpg" alt="Pengalaman magang di perusahaan teknologi 2">
+                        <img class="mySlides w-full h-auto object-cover" src="magang3.jpg" alt="Pengalaman magang di perusahaan teknologi 3">
+                        <button class="slider-nav-btn prev-btn absolute left-0 top-1/2 -translate-y-1/2 px-4 py-2 text-3xl text-white rounded-r-lg" onclick="plusSlides(-1, 'internship')">&#10094;</button>
+                        <button class="slider-nav-btn next-btn absolute right-0 top-1/2 -translate-y-1/2 px-4 py-2 text-3xl text-white rounded-l-lg" onclick="plusSlides(1, 'internship')">&#10095;</button>
+                        <div class="text-center mt-4">
+                            <span class="dot" onclick="currentSlide(1, 'internship')"></span>
+                            <span class="dot" onclick="currentSlide(2, 'internship')"></span>
+                            <span class="dot" onclick="currentSlide(3, 'internship')"></span>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        Selama masa SMK, saya melaksanakan program internship selama 6 bulan di Ubud pada sebuah perusahaan industri. Saya ditempatkan di tim kreatif, di mana saya terlibat dalam pembuatan konten, pengembangan ide visual, serta mendukung berbagai proyek perusahaan. Melalui pengalaman ini, saya tidak hanya memperoleh keterampilan teknis di bidang desain dan kreativitas, tetapi juga memahami alur kerja profesional dalam lingkungan industri. Sebagai hasil dari program tersebut, saya berhasil memperoleh sertifikat LSP serta sertifikat dari industri, yang menjadi bukti kompetensi dan pencapaian saya selama magang.
+                    </p>
+                    <a href="#projects" class="nav-link inline-block mt-8 bg-gray-500 text-white px-6 py-3 rounded-full text-base font-semibold hover:bg-gray-600 transition duration-300" data-section="projects">Kembali ke Galeri</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman Kontak -->
+        <section id="contact" class="section-inactive py-16">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Hubungi Saya</h2>
+                <div class="card p-10">
+                    <p class="text-gray-700 text-lg mb-8 leading-relaxed">
+                        Jika Anda tertarik untuk berkolaborasi atau ingin sekadar menyapa, jangan ragu untuk menghubungi saya melalui formulir di bawah ini.
+                    </p>
+                    <form class="space-y-5">
+                        <input type="text" placeholder="Nama Anda" class="w-full px-5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                        <input type="email" placeholder="Email Anda" class="w-full px-5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                        <textarea placeholder="Pesan Anda" rows="5" class="w-full px-5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"></textarea>
+                        <button type="submit" class="w-full bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold text-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105 shadow-md">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman Tugas JavaScript -->
+        <section id="javascript-task" class="section-inactive py-16">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Tugas JavaScript: Kalkulator Sederhana</h2>
+                <div class="card p-10">
+                    <div class="bg-gray-100 p-8 rounded-lg shadow-inner">
+                        <input type="text" id="display" class="w-full mb-6 text-right text-4xl font-extrabold bg-gray-50 rounded-xl p-4 shadow-md border-2 border-gray-300" value="0" readonly>
+                        <div class="grid grid-cols-4 gap-4">
+                            <button class="calc-btn op-btn bg-gray-300 hover:bg-gray-400 text-gray-800" data-value="AC">AC</button>
+                            <button class="calc-btn op-btn bg-gray-300 hover:bg-gray-400 text-gray-800" data-value="DEL">DEL</button>
+                            <button class="calc-btn op-btn bg-gray-300 hover:bg-gray-400 text-gray-800" data-value="%">%</button>
+                            <button class="calc-btn op-btn bg-indigo-500 hover:bg-indigo-600 text-white" data-value="/">/</button>
+
+                            <button class="calc-btn num-btn bg-white hover:bg-gray-200 text-gray-800" data-value="7">7</button>
+                            <button class="calc-btn num-btn bg-white hover:bg-gray-200 text-gray-800" data-value="8">8</button>
+                            <button class="calc-btn num-btn bg-white hover:bg-gray-200 text-gray-800" data-value="9">9</button>
+                            <button class="calc-btn op-btn bg-indigo-500 hover:bg-indigo-600 text-white" data-value="*">*</button>
+
+                            <button class="calc-btn num-btn bg-white hover:bg-gray-200 text-gray-800" data-value="4">4</button>
+                            <button class="calc-btn num-btn bg-white hover:bg-gray-200 text-gray-800" data-value="5">5</button>
+                            <button class="calc-btn num-btn bg-white hover:bg-gray-200 text-gray-800" data-value="6">6</button>
+                            <button class="calc-btn op-btn bg-indigo-500 hover:bg-indigo-600 text-white" data-value="-">-</button>
+
+                            <button class="calc-btn num-btn bg-white hover:bg-gray-200 text-gray-800" data-value="1">1</button>
+                            <button class="calc-btn num-btn bg-white hover:bg-gray-200 text-gray-800" data-value="2">2</button>
+                            <button class="calc-btn num-btn bg-white hover:bg-gray-200 text-gray-800" data-value="3">3</button>
+                            <button class="calc-btn op-btn bg-indigo-500 hover:bg-indigo-600 text-white" data-value="+">+</button>
+
+                            <button class="calc-btn num-btn bg-white hover:bg-gray-200 text-gray-800 col-span-2" data-value="0">0</button>
+                            <button class="calc-btn num-btn bg-white hover:bg-gray-200 text-gray-800" data-value=".">.</button>
+                            <button class="calc-btn op-btn bg-indigo-700 hover:bg-indigo-800 text-white" data-value="=">=</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <p class="text-gray-400">&copy; 2024 Portofolio Saya. Semua hak cipta dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript untuk navigasi antar halaman
+        // Menambahkan tombol "Lihat Galeri Saya" ke dalam list navLinks
+        const navLinks = document.querySelectorAll('.nav-link, #mobile-menu a');
+        const sections = document.querySelectorAll('main section');
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function showSection(id) {
+            sections.forEach(section => {
+                section.classList.add('section-inactive');
+                section.classList.remove('section-active');
+            });
+            const activeSection = document.getElementById(id);
+            if (activeSection) {
+                activeSection.classList.add('section-active');
+                activeSection.classList.remove('section-inactive');
+            }
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSectionId = e.target.getAttribute('data-section');
+                showSection(targetSectionId);
+
+                // Update active class for desktop nav
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                const activeNavLink = document.querySelector(`.nav-link[data-section="${targetSectionId}"]`);
+                if (activeNavLink) {
+                    activeNavLink.classList.add('active');
+                }
+
+                // Close mobile menu
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Tampilkan halaman yang sesuai dengan URL hash saat pertama kali dimuat
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                showSection(hash);
+                const activeNavLink = document.querySelector(`.nav-link[data-section="${hash}"]`);
+                if (activeNavLink) {
+                    activeNavLink.classList.add('active');
+                }
+            } else {
+                showSection('home');
+                document.querySelector('.nav-link[data-section="home"]').classList.add('active');
+            }
+        });
+
+        // Toggle mobile menu
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // JavaScript untuk Tugas Kalkulator
+        const display = document.getElementById('display');
+        const buttons = document.querySelectorAll('.calc-btn');
+
+        let currentInput = '0';
+        let operator = null;
+        let prevValue = null;
+
+        function updateDisplay() {
+            display.value = currentInput;
+        }
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const value = button.getAttribute('data-value');
+
+                if (value >= '0' && value <= '9' || value === '.') {
+                    if (currentInput === '0' && value !== '.') {
+                        currentInput = value;
+                    } else if (value === '.' && currentInput.includes('.')) {
+                        return; // Hindari duplikasi titik desimal
+                    } else {
+                        currentInput += value;
+                    }
+                } else if (['+', '-', '*', '/', '%'].includes(value)) {
+                    if (prevValue !== null && operator !== null) {
+                        currentInput = evaluate();
+                    }
+                    prevValue = parseFloat(currentInput);
+                    operator = value;
+                    currentInput = '0'; // Reset input untuk nilai berikutnya
+                } else if (value === '=') {
+                    if (prevValue !== null && operator !== null) {
+                        currentInput = evaluate();
+                        prevValue = null;
+                        operator = null;
+                    }
+                } else if (value === 'AC') {
+                    currentInput = '0';
+                    prevValue = null;
+                    operator = null;
+                } else if (value === 'DEL') {
+                    currentInput = currentInput.slice(0, -1) || '0';
+                }
+
+                updateDisplay();
+            });
+        });
+
+        function evaluate() {
+            const currentValue = parseFloat(currentInput);
+            switch (operator) {
+                case '+':
+                    return (prevValue + currentValue).toString();
+                case '-':
+                    return (prevValue - currentValue).toString();
+                case '*':
+                    return (prevValue * currentValue).toString();
+                case '/':
+                    if (currentValue === 0) {
+                        return 'Error'; // Hindari pembagian dengan nol
+                    }
+                    return (prevValue / currentValue).toString();
+                case '%':
+                    return (prevValue % currentValue).toString();
+                default:
+                    return currentValue.toString();
+            }
+        }
+
+        // JavaScript untuk Slider Foto
+        let slideIndex = {
+            'organisasi': 1,
+            'prestasi': 1,
+            'internship': 1
+        };
+
+        window.addEventListener('load', () => {
+            showSlides(1, 'organisasi');
+            showSlides(1, 'prestasi');
+            showSlides(1, 'internship');
+        });
+
+        function plusSlides(n, sliderId) {
+            showSlides(slideIndex[sliderId] += n, sliderId);
+        }
+
+        function currentSlide(n, sliderId) {
+            showSlides(slideIndex[sliderId] = n, sliderId);
+        }
+
+        function showSlides(n, sliderId) {
+            let i;
+            const sliderContainer = document.querySelector(`[data-slider-id="${sliderId}"]`);
+            if (!sliderContainer) return;
+            const slides = sliderContainer.getElementsByClassName("mySlides");
+            const dots = sliderContainer.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex[sliderId] = 1 }
+            if (n < 1) { slideIndex[sliderId] = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            if (slides.length > 0) {
+              slides[slideIndex[sliderId] - 1].style.display = "block";
+              dots[slideIndex[sliderId] - 1].classList.add("active");
+            }
+        }
+    </script>
+</body>
+</html>
