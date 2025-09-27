@@ -102,9 +102,9 @@
             <nav class="hidden md:flex space-x-8">
                 <a href="#home" class="nav-link text-gray-600 hover:text-indigo-600 active-link" data-section="home">Beranda</a>
                 <a href="#about" class="nav-link text-gray-600 hover:text-indigo-600" data-section="about">Tentang Saya</a>
+                <a href="#main-portfolio" class="nav-link text-gray-600 hover:text-indigo-600" data-section="main-portfolio">Portofolio</a>
                 <a href="#projects" class="nav-link text-gray-600 hover:text-indigo-600" data-section="projects">Galeri</a>
                 <a href="#contact" class="nav-link text-gray-600 hover:text-indigo-600" data-section="contact">Kontak</a>
-                <a href="#javascript-task" class="nav-link text-gray-600 hover:text-indigo-600" data-section="javascript-task">Tugas JS</a>
             </nav>
             <button id="menu-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -115,14 +115,14 @@
         <nav id="mobile-menu" class="md:hidden bg-white mt-2 hidden">
             <a href="#home" class="block py-3 px-4 text-gray-800 hover:bg-gray-200" data-section="home">Beranda</a>
             <a href="#about" class="block py-3 px-4 text-gray-800 hover:bg-gray-200" data-section="about">Tentang Saya</a>
-            <a href="#projects" class="block py-3 px-4 text-gray-800 hover:bg-gray-200" data-section="projects">Proyek</a>
+             <a href="#main-portfolio" class="block py-3 px-4 text-gray-800 hover:bg-gray-200" data-section="main-portfolio">Portofolio</a>
+            <a href="#projects" class="block py-3 px-4 text-gray-800 hover:bg-gray-200" data-section="projects">Galeri</a>
             <a href="#contact" class="block py-3 px-4 text-gray-800 hover:bg-gray-200" data-section="contact">Kontak</a>
             <a href="#javascript-task" class="block py-3 px-4 text-gray-800 hover:bg-gray-200" data-section="javascript-task">Tugas JS</a>
         </nav>
     </header>
 
     <main class="flex-grow container mx-auto px-4 md:px-6 py-12">
-        <!-- Halaman Beranda -->
         <section id="home" class="section-active">
             <div class="min-h-[70vh] flex flex-col justify-center items-center text-center">
                 <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6">
@@ -131,16 +131,14 @@
                 <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl leading-relaxed">
                     Saya adalah Suniaramana Mardana Putra, mahasiswa Program Studi Teknologi Rekayasa Perangkat Lunak. Saya memiliki minat dalam bidang pemrograman, desain grafis dan videografi. Selama perkuliahan, saya terbiasa mengerjakan proyek individu maupun tim yang melatih skill serta kerja sama.
                 </p>
-                <a href="#projects" class="nav-link bg-indigo-600 text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-indigo-700 transition duration-300 transform hover:scale-105 shadow-md" data-section="projects">Lihat Galeri Saya</a>
+                <a href="#main-portfolio" class="nav-link bg-indigo-600 text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-indigo-700 transition duration-300 transform hover:scale-105 shadow-md" data-section="main-portfolio">Lihat Portofolio Utama</a>
             </div>
         </section>
 
-        <!-- Halaman Tentang Saya -->
         <section id="about" class="section-inactive py-16">
             <div class="max-w-5xl mx-auto text-center">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Tentang Saya</h2>
                 <div class="card p-10 flex flex-col items-center">
-                    <!-- Ganti URL di bawah ini dengan tautan gambar profil Anda setelah diunggah ke layanan hosting gambar -->
                     <img src="foto profil.png" alt="Foto Profil" class="w-40 h-40 rounded-full mx-auto mb-6 object-cover">
                     <p class="text-gray-700 text-lg leading-relaxed">
                         Saya adalah seorang mahasiswa/profesional yang tertarik pada dunia pengembangan web. Saya memiliki keahlian dalam HTML, CSS, dan JavaScript, serta pengalaman dalam menggunakan framework modern seperti Tailwind CSS. Saya sangat menikmati proses mengubah ide menjadi produk digital yang fungsional dan estetis.
@@ -152,11 +150,9 @@
             </div>
         </section>
 
-        <!-- Halaman Galeri -->
         <section id="projects" class="section-inactive py-16">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-12">Galeri</h2>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-12">Galeri (Organisasi, Prestasi, Internship)</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Foto Organisasi -->
                 <div class="card p-0">
                     <img src="Ukm Catur.JPG" alt="Foto kegiatan organisasi mahasiswa" class="w-full h-48 object-cover rounded-t-lg">
                     <div class="p-6">
@@ -165,7 +161,6 @@
                         <a href="#organisasi-detail" class="nav-link inline-block bg-indigo-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-600 transition duration-300" data-section="organisasi-detail">Lihat Detail</a>
                     </div>
                 </div>
-                <!-- Foto Prestasi -->
                 <div class="card p-0">
                     <img src="Beregu Putra Standar.png" alt="Sertifikat penghargaan akademik" class="w-full h-48 object-cover rounded-t-lg">
                     <div class="p-6">
@@ -174,7 +169,6 @@
                         <a href="#prestasi-detail" class="nav-link inline-block bg-indigo-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-600 transition duration-300" data-section="prestasi-detail">Lihat Detail</a>
                     </div>
                 </div>
-                <!-- Foto Internship -->
                 <div class="card p-0">
                     <img src="magang1.jpg" alt="Pengalaman magang di perusahaan teknologi" class="w-full h-48 object-cover rounded-t-lg">
                     <div class="p-6">
@@ -186,7 +180,33 @@
             </div>
         </section>
 
-        <!-- Halaman Detail Organisasi -->
+        <section id="main-portfolio" class="section-inactive py-16">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-12">Proyek Utama Saya</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                
+                <div class="card p-6 bg-white border-t-4 border-emerald-500">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Web Aplikasi E-Commerce MAPStudio</h3>
+                    <p class="text-gray-600 mb-4">Proyek pengembangan front-end (React/Next.js) yang di-deploy menggunakan Vercel. Fitur utama: keranjang belanja, tampilan produk, dan filter kategori.</p>
+                    <span class="inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full">React/Next.js</span>
+                    <span class="inline-block bg-gray-100 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Deployment Vercel</span>
+                   <a href="https://dashboard-map-up1a.vercel.app/" data-section="javascript-task" class="block mt-4 text-blue-500 hover:text-blue-700 font-bold transition duration-300">
+                        Lihat Detail Vercel &rarr;
+                    </a>    
+                </div>
+                
+                <div class="card p-6 bg-white border-t-4 border-blue-500">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Aplikasi Kalkulator</h3>
+                    <p class="text-gray-600 mb-4">Proyek pengembangan front-end murni menggunakan JavaScript (HTML/CSS/JS) untuk mengelola daftar tugas. Fitur utama: menambah, menghapus, menandai selesai (toggle).</p>
+                    <span class="inline-block bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
+                    <span class="inline-block bg-gray-100 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Local Storage API</span>
+                    <a href="#javascript-task" data-section="javascript-task" class="nav-link block mt-4 text-blue-500 hover:text-blue-700 font-bold transition duration-300">
+                        Lihat Kalkulator &rarr;
+                    </a>
+</div>
+
+            </div>
+        </section>
+        
         <section id="organisasi-detail" class="section-inactive py-16">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Detail Organisasi</h2>
@@ -211,7 +231,6 @@
             </div>
         </section>
         
-        <!-- Halaman Detail Prestasi -->
         <section id="prestasi-detail" class="section-inactive py-16">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Detail Prestasi</h2>
@@ -236,7 +255,6 @@
             </div>
         </section>
 
-        <!-- Halaman Detail Internship -->
         <section id="internship-detail" class="section-inactive py-16">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Detail Internship</h2>
@@ -261,7 +279,6 @@
             </div>
         </section>
 
-        <!-- Halaman Kontak -->
         <section id="contact" class="section-inactive py-16">
             <div class="max-w-2xl mx-auto text-center">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Hubungi Saya</h2>
@@ -279,7 +296,6 @@
             </div>
         </section>
 
-        <!-- Halaman Tugas JavaScript -->
         <section id="javascript-task" class="section-inactive py-16">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Tugas JavaScript: Kalkulator Sederhana</h2>
@@ -325,7 +341,6 @@
 
     <script>
         // JavaScript untuk navigasi antar halaman
-        // Menambahkan tombol "Lihat Galeri Saya" ke dalam list navLinks
         const navLinks = document.querySelectorAll('.nav-link, #mobile-menu a');
         const sections = document.querySelectorAll('main section');
         const menuButton = document.getElementById('menu-button');
@@ -345,21 +360,31 @@
 
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetSectionId = e.target.getAttribute('data-section');
-                showSection(targetSectionId);
-
-                // Update active class for desktop nav
-                document.querySelectorAll('.nav-link').forEach(navLink => {
-                    navLink.classList.remove('active');
-                });
-                const activeNavLink = document.querySelector(`.nav-link[data-section="${targetSectionId}"]`);
-                if (activeNavLink) {
-                    activeNavLink.classList.add('active');
+                // Check if the link is an external link (like the Vercel link)
+                if (e.target.getAttribute('target') === '_blank') {
+                    // Allow external link to open normally
+                    return; 
                 }
 
-                // Close mobile menu
-                mobileMenu.classList.add('hidden');
+                e.preventDefault();
+                const targetSectionId = e.target.getAttribute('data-section');
+                
+                // Only change section if targetSectionId is available
+                if (targetSectionId) {
+                    showSection(targetSectionId);
+
+                    // Update active class for desktop nav
+                    document.querySelectorAll('.nav-link').forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    const activeNavLink = document.querySelector(`.nav-link[data-section="${targetSectionId}"]`);
+                    if (activeNavLink) {
+                        activeNavLink.classList.add('active');
+                    }
+
+                    // Close mobile menu
+                    mobileMenu.classList.add('hidden');
+                }
             });
         });
 
